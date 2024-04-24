@@ -1,31 +1,39 @@
-import { useState, useEffect } from 'react';
-import logo from './assets/hogwarts.png';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import logo from './assets/hogwarts.png';
 
 function App() {
-  const [students, setStudents] = useState(null);
+  const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    const fetchStudents = async () => {
-      const response = await fetch('http://localhost:3000/dummy/students');
-      const data = await response.json();
-      setStudents(data);
-    };
-
-    fetchStudents();
+    fetch('http://localhost:3000/dummy/students')
+      .then(response => response.json())
+      .then(data => setStudents(data))
+      .catch(error => console.error('Error fetching data: ', error));
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Here is a list of all students:</p>
-        <div className="App-intro">
-          {students ? students.map(student =>
-            <div key={crypto.randomUUID()}>{student.name} : {student.house}</div>
-          ) : "Loading..."}
-        </div>
+        <img src={logo} className="App-logo" alt="Hogwarts logo" />
+        <h1>Liste des élèves en préinscription à Poudlard</h1>
       </header>
+      <table className="Students-table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Maison</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map(student => (
+            <tr key={student.name}>
+              <td>{student.name}</td>
+              <td>{student.house}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
