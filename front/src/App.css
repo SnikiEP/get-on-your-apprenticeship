@@ -3,33 +3,70 @@
   text-align: center;
   background-color: #f4f4f4;
   color: #333;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .App-logo {
-  height: 80px;
+  height: 60px;
   margin-bottom: 20px;
 }
 
 .App-header {
   background-color: #1a1a1a;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   color: white;
+  padding: 20px 0;
+  margin: 0;
+  width: 100%;
+  border-radius: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.Random-student {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fffae6;
+  padding: 30px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 60px;
+}
+.Crown-image {
+  width: 60px;
+}
+.Student-info {
+  text-align: center;
+}
+
+.Student-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .Students-table {
   width: 100%;
   margin-top: 20px;
   border-collapse: collapse;
+  table-layout: fixed;
+  word-break: break-all;
 }
 
 .Students-table th,
 .Students-table td {
   text-align: left;
-  padding: 12px;
+  padding: 10px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -44,4 +81,30 @@
 
 .Students-table tr:hover {
   background-color: #ddd;
+}
+
+@media (max-width: 768px) {
+  .Students-table th, .Students-table td {
+    padding: 4px;
+  }
+
+  .Student-image {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .App-header {
+    font-size: small;
+  }
+  .Student-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .Students-table th, .Students-table td {
+    font-size: 8px;
+    padding: 3px;
+  }
 }

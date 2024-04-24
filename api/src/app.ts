@@ -4,7 +4,6 @@ import cors from 'cors';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-
 import usersRouter from './routes/users';
 import dummyRouter from './routes/dummy';
 import realRouter from './routes/real';
